@@ -6,6 +6,30 @@ pub struct Solution;
 #[allow(dead_code)]
 impl Solution {
     pub fn length_of_longest_substring(s: String) -> i32 {
+        let mut h = HashSet::new();
+        let bytes = s.as_bytes();
+        let mut max = 0;
+        let mut i = 0;
+        let mut j = 0;
+
+        while i < bytes.len() && j < bytes.len() {
+            match h.get(&bytes[j]) {
+                None => {
+                    h.insert(bytes[j]);
+                    j += 1;
+                    max = max.max(j-i);
+                },
+                _ => {
+                    h.remove(&bytes[i]);
+                    i += 1;
+                }
+            }
+        }
+
+        max as i32
+    }
+
+    pub fn length_of_longest_substring2(s: String) -> i32 {
         let mut h = HashMap::new();
         let bytes = s.as_bytes();
         let mut max = 0;
@@ -29,30 +53,6 @@ impl Solution {
         max.max(sz) as i32
     }
 
-    pub fn length_of_longest_substring2(s: String) -> i32 {
-        let mut h = HashMap::new();
-        let bytes = s.as_bytes();
-        let mut max = 0;
-        let mut sz = 0;
-        let mut i = 0;
-        while i < bytes.len() {
-            match h.get(&bytes[i]) {
-                None => {
-                    sz += 1;
-                    h.insert(bytes[i], i);
-                },
-                Some(&last) => {
-                    max = max.max(sz);
-                    h.clear();
-                    ((last+1)..=i).for_each(|j| { h.insert(bytes[j], j); });
-                    sz = (i - last) as i32;
-                }
-            }
-            i += 1;
-        }
-        
-        max.max(sz)
-    }
 }
 
 #[allow(dead_code)]
@@ -134,6 +134,14 @@ mod tests {
 
     #[bench]
     fn bench_longest_substring2(b: &mut Bencher) {
+        b.iter(|| {
+            let s = gen_random_string();
+            Solution::length_of_longest_substring2(s);
+        })
+    }
+
+    #[bench]
+    fn bench_longest_substring3(b: &mut Bencher) {
         b.iter(|| {
             let s = gen_random_string();
             Solution2::length_of_longest_substring(s);
