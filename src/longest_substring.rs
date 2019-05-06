@@ -53,6 +53,41 @@ impl Solution {
         max.max(sz) as i32
     }
 
+    pub fn length_of_longest_substring3(s: String) -> i32 {
+        let mut h = [None; 256];
+        let bytes = s.as_bytes();
+        let mut max = 0;
+        let mut start = 0;
+
+        for (j, &ch) in bytes.iter().enumerate() {
+            if let Some(last) = h[ch as usize] {
+                start = start.max(last+1);
+            }
+            h[ch as usize] = Some(j);
+            max = max.max(j-start+1);
+        }
+
+        max as i32
+    }
+
+    pub fn length_of_longest_substring4(s: String) -> i32 {
+        let mut h :HashMap<u8, usize> = HashMap::new();
+        let bytes = s.as_bytes();
+        let mut max = 0;
+        let mut i = 0;
+        let mut j = 0;
+
+        while i < bytes.len() && j < bytes.len() {
+            if let Some(&last) = h.get(&bytes[j]) {
+                i = (last+1).max(i);
+            }
+            h.insert(bytes[j], j);
+            max = max.max(j-i+1);
+            j += 1;
+        }
+
+        max as i32
+    }
 }
 
 #[allow(dead_code)]
@@ -102,16 +137,18 @@ mod tests {
 
     #[test]
     fn test_longest_substring() {
-        assert_eq!(Solution::length_of_longest_substring("abcabcbb".to_string()), 3);
-        assert_eq!(Solution::length_of_longest_substring("bbbbb".to_string()), 1);
-        assert_eq!(Solution::length_of_longest_substring("pwwkew".to_string()), 3);
-        assert_eq!(Solution::length_of_longest_substring(" ".to_string()), 1);
-        assert_eq!(Solution::length_of_longest_substring("dvdf".to_string()), 3);
-        assert_eq!(Solution::length_of_longest_substring("abba".to_string()), 2);
+        assert_eq!(Solution::length_of_longest_substring3("abcabcbb".to_string()), 3);
+        assert_eq!(Solution::length_of_longest_substring3("bbbbb".to_string()), 1);
+        assert_eq!(Solution::length_of_longest_substring3("pwwkew".to_string()), 3);
+        assert_eq!(Solution::length_of_longest_substring3(" ".to_string()), 1);
+        assert_eq!(Solution::length_of_longest_substring3("dvdf".to_string()), 3);
+        assert_eq!(Solution::length_of_longest_substring3("abba".to_string()), 2);
+        assert_eq!(Solution::length_of_longest_substring3("tmmzuxt".to_string()), 5);
+        
 
         let s = gen_random_string();
-        assert_eq!(Solution::length_of_longest_substring(s.clone()),
-            Solution2::length_of_longest_substring(s));
+        assert_eq!(Solution::length_of_longest_substring3(s.clone()),
+            Solution::length_of_longest_substring(s));
     }
 
     #[test]
@@ -136,7 +173,7 @@ mod tests {
     fn bench_longest_substring2(b: &mut Bencher) {
         b.iter(|| {
             let s = gen_random_string();
-            Solution::length_of_longest_substring2(s);
+            Solution::length_of_longest_substring3(s);
         })
     }
 
