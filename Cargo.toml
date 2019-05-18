@@ -6,6 +6,7 @@ edition = "2018"
 
 [dependencies]
 rand = "*"
+color-backtrace = "0.1"
 
 [dev-dependencies]
 proptest = "*"
