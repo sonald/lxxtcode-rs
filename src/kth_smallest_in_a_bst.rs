@@ -64,7 +64,35 @@ use std::collections::BinaryHeap;
 impl Solution {
     pub fn kth_smallest(root: Option<Rc<RefCell<TreeNode>>>, k: i32) -> i32 {
         //Solution::by_heap(root, k)
-        Solution::by_inorder(root, k)
+        //Solution::by_inorder(root, k)
+        Solution::by_inorder_iterative(root, k)
+    }
+
+    pub fn by_inorder_iterative(root: Option<Rc<RefCell<TreeNode>>>, k: i32) -> i32 {
+        let mut sp = vec![];
+        let mut k = k;
+
+        let mut np = root;
+        loop {
+            while let Some(n) = np {
+                sp.push(Some(n.clone()));
+                np = n.borrow().left.clone();
+            }
+
+            if let Some(n) = sp.pop() {
+                let n = n.unwrap();
+                k -= 1;
+                if k == 0 {
+                    return n.borrow().val;
+                }
+
+                np = n.borrow().right.clone();
+            } else {
+                break
+            }
+        }
+
+        0
     }
 
     pub fn by_inorder(root: Option<Rc<RefCell<TreeNode>>>, k: i32) -> i32 {
