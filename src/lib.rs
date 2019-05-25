@@ -1,6 +1,8 @@
 #![feature(trace_macros)]
 #![feature(test)]
 
+#[macro_use]
+mod utils;
 mod twosum;
 mod twosum2;
 mod two_sum_iv;
@@ -12,3 +14,4 @@ mod kth_largest_in_an_array;
 mod contains_duplicates;
 mod kth_smallest_in_a_bst;
 mod binary_tree_zigzag_level_order_traversal;
+mod longest_common_prefix;
