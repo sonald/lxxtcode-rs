@@ -17,3 +17,4 @@ mod binary_tree_zigzag_level_order_traversal;
 mod longest_common_prefix;
 mod three_sum;
 mod letter_combinations_of_a_phone_number;
+mod binary_watch;
