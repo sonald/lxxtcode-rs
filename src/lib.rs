@@ -18,3 +18,4 @@ mod longest_common_prefix;
 mod three_sum;
 mod letter_combinations_of_a_phone_number;
 mod binary_watch;
+mod word_ladder;
