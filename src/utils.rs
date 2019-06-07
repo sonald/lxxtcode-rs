@@ -83,3 +83,78 @@ macro_rules! build_tree {
     );
 }
 
+
+// Definition for singly-linked list.
+#[derive(PartialEq, Eq, Clone, Debug)]
+pub struct ListNode {
+    pub val: i32,
+    pub next: Option<Box<ListNode>>,
+}
+
+#[allow(dead_code)]
+impl ListNode {
+    #[inline]
+    pub fn new(val: i32) -> Self {
+        ListNode { next: None, val }
+    }
+}
+
+
+#[allow(dead_code)]
+macro_rules! build_list {
+    ($first:expr, $($rest:expr),*) => (
+        {
+            let mut root = Some(Box::new(ListNode::new($first)));
+            let mut parent = &mut root;
+            $(
+
+                let np = Some(Box::new(ListNode::new($rest)));
+                if let Some(ref mut inner) = parent {
+                    inner.next = np;
+                    parent = &mut inner.next;
+                }
+            )*
+
+                root
+        }
+    )
+}
+
+#[allow(dead_code)]
+macro_rules! build_rand_list {
+    ($N:expr) => (
+        {
+            let mut root = Some(Box::new(ListNode::new(0)));
+            let mut parent = &mut root;
+
+            for i in 1..$N {
+                let np = Some(Box::new(ListNode::new(i%10)));
+                if let Some(ref mut inner) = parent {
+                    inner.next = np;
+                    parent = &mut inner.next;
+                }
+            }
+            root
+        }
+    )
+}
+
+#[allow(dead_code)]
+pub fn print_list(l: &Option<Box<ListNode>>) {
+    if let Some(ref l) = l {
+        print!("{} -> ", l.val);
+        print_list(&l.next);
+    }
+}
+
+#[allow(dead_code)]
+pub fn list_check_equal(l: &Option<Box<ListNode>>, r: &Option<Box<ListNode>>) {
+    match (l, r) {
+        (Some(l), Some(r)) => {
+            assert_eq!(l.val, r.val);
+            list_check_equal(&l.next, &r.next);
+        },
+        (None, None) => assert!(true),
+        _ => assert!(false)
+    }
+}

@@ -1,17 +1,4 @@
-// Definition for singly-linked list.
-#[derive(PartialEq, Eq, Clone, Debug)]
-pub struct ListNode {
-    pub val: i32,
-    pub next: Option<Box<ListNode>>,
-}
-
-#[allow(dead_code)]
-impl ListNode {
-    #[inline]
-    fn new(val: i32) -> Self {
-        ListNode { next: None, val }
-    }
-}
+use super::utils::*;
 
 #[allow(dead_code)]
 pub struct Solution;
@@ -123,61 +110,6 @@ mod tests {
     use test::Bencher;
     use super::*;
 
-    macro_rules! build_list {
-        ($first:expr, $($rest:expr),*) => (
-            {
-                let mut root = Some(Box::new(ListNode::new($first)));
-                let mut parent = &mut root;
-                $(
-
-                    let np = Some(Box::new(ListNode::new($rest)));
-                    if let Some(ref mut inner) = parent {
-                        inner.next = np;
-                        parent = &mut inner.next;
-                    }
-                )*
-
-                root
-            }
-        )
-    }
-
-    macro_rules! build_rand_list {
-        () => (
-            {
-                let mut root = Some(Box::new(ListNode::new(0)));
-                let mut parent = &mut root;
-
-                for i in 1..10000 {
-                    let np = Some(Box::new(ListNode::new(i%10)));
-                    if let Some(ref mut inner) = parent {
-                        inner.next = np;
-                        parent = &mut inner.next;
-                    }
-                }
-                root
-            }
-        )
-    }
-
-    fn print_list(l: &Option<Box<ListNode>>) {
-        if let Some(ref l) = l {
-            print!("{} -> ", l.val);
-            print_list(&l.next);
-        }
-    }
-
-    fn check_equal(l: &Option<Box<ListNode>>, r: &Option<Box<ListNode>>) {
-        match (l, r) {
-            (Some(l), Some(r)) => {
-                assert_eq!(l.val, r.val);
-                check_equal(&l.next, &r.next);
-            },
-            (None, None) => assert!(true),
-            _ => assert!(false)
-        }
-    }
-
     #[test]
     pub fn test_add_two_nums() {
         //Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
@@ -189,7 +121,7 @@ mod tests {
         let res = Solution::add_two_numbers(lhs, rhs);
         let expect = build_list!(7, 0, 8);
 
-        check_equal(&res, &expect);
+        list_check_equal(&res, &expect);
     }
 
     #[test]
@@ -199,7 +131,7 @@ mod tests {
         let res = Solution::add_two_numbers(lhs, rhs);
         let expect = build_list!(6, 8, 2, 2);
 
-        check_equal(&res, &expect);
+        list_check_equal(&res, &expect);
     }
 
     #[test]
@@ -210,7 +142,7 @@ mod tests {
         //print_list(&res);
         let expect = build_list!(0, 1);
 
-        check_equal(&res, &expect);
+        list_check_equal(&res, &expect);
     }
 
 
@@ -221,7 +153,7 @@ mod tests {
         let res = Solution::add_two_numbers2(lhs, rhs);
         let expect = build_list!(6, 8, 2, 2);
 
-        check_equal(&res, &expect);
+        list_check_equal(&res, &expect);
     }
 
     #[test]
@@ -232,14 +164,14 @@ mod tests {
         //print_list(&res);
         let expect = build_list!(0, 1);
 
-        check_equal(&res, &expect);
+        list_check_equal(&res, &expect);
     }
 
     #[bench]
     pub fn bench_ver1(b: &mut Bencher) {
         b.iter(|| {
-            let lhs = build_rand_list!();
-            let rhs = build_rand_list!();
+            let lhs = build_rand_list!(10000);
+            let rhs = build_rand_list!(10000);
             Solution::add_two_numbers(lhs, rhs);
         });
     }
@@ -247,8 +179,8 @@ mod tests {
     #[bench]
     pub fn bench_ver2(b: &mut Bencher) {
         b.iter(|| {
-            let lhs = build_rand_list!();
-            let rhs = build_rand_list!();
+            let lhs = build_rand_list!(10000);
+            let rhs = build_rand_list!(10000);
             Solution::add_two_numbers2(lhs, rhs);
         });
     }

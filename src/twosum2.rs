@@ -1,5 +1,4 @@
 use std::vec::Vec;
-use std::collections::HashMap;
 
 struct Solution;
 struct Solution2;
