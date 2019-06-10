@@ -64,6 +64,7 @@ impl Solution {
         res.into_iter().collect()
     }
 
+    // fast, could be faster if eliminate duplicates without HashSet
     fn by_sort_and_2sum(mut nums: Vec<i32>) -> Vec<Vec<i32>> {
         use std::collections::HashSet;
 

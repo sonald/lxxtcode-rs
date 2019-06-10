@@ -115,7 +115,7 @@ macro_rules! build_list {
                 }
             )*
 
-                root
+            root
         }
     )
 }
