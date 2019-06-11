@@ -20,3 +20,4 @@ mod letter_combinations_of_a_phone_number;
 mod binary_watch;
 mod word_ladder;
 mod sort_list;
+mod remove_nth_from_end_of_list;
