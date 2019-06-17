@@ -1,5 +1,6 @@
 #![feature(trace_macros)]
 #![feature(test)]
+#![allow(dead_code)]
 
 #[macro_use]
 mod utils;
@@ -23,3 +24,9 @@ mod sort_list;
 mod remove_nth_from_end_of_list;
 mod container_with_most_water;
 mod valid_parentheses;
+mod merge_k_sorted_lists;
+mod merge_two_sorted_list;
+mod generate_parentheses;
+mod implement_strstr;
+mod remove_duplicates_from_sorted_array;
+mod search_in_rotated_sorted_array;
