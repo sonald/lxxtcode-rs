@@ -35,3 +35,4 @@ mod count_and_say;
 mod permutations;
 mod valid_sudoku;
 mod group_anagrams;
+mod rotate_image;
