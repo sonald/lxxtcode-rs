@@ -37,3 +37,4 @@ mod valid_sudoku;
 mod group_anagrams;
 mod rotate_image;
 mod powx_n;
+mod spiral_matrix;
