@@ -39,3 +39,4 @@ mod rotate_image;
 mod powx_n;
 mod spiral_matrix;
 mod maximum_subarray;
+mod jump_game;
