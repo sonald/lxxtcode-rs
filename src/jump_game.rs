@@ -58,6 +58,49 @@ impl Solution {
 
         dp[0]
     }
+
+    fn by_reach_zeros(nums: Vec<i32>) -> bool {
+        let n = nums.len();
+        if n == 1 { return true; }
+
+        let mut i = n as i32-2;
+        let mut zero_pos = i;
+
+        while i >= 0 {
+            if nums[i as usize] > 0 {
+                i -= 1;
+                zero_pos = i;
+                continue;
+            }
+
+            zero_pos = i;
+            i -= 1;
+            while i >= 0 {
+                if zero_pos-i < nums[i as usize] {
+                    zero_pos = i-1;
+                    break;
+                }
+
+                i -= 1;
+            }
+        }
+
+        zero_pos < 0
+    }
+
+    fn by_greedy(nums: Vec<i32>) -> bool {
+        let n = nums.len();
+
+        let mut last_good = n-1;
+        for i in (0..n-1).rev() {
+            if last_good-i <= nums[i] as usize {
+                last_good = i;
+            }
+        }
+
+
+        last_good == 0
+    }
 }
 
 #[cfg(test)]
@@ -74,6 +117,16 @@ mod tests {
     #[test]
     fn jump_test_forward() {
         method_test(Solution::by_forward_dp);
+    }
+
+    #[test]
+    fn jump_test_reach_zeros() {
+        method_test(Solution::by_reach_zeros);
+    }
+
+    #[test]
+    fn jump_test_greedy() {
+        method_test(Solution::by_greedy);
     }
 
     fn method_test(f: impl Fn(Vec<i32>)->bool) {
