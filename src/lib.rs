@@ -39,6 +39,7 @@ mod rotate_image;
 mod powx_n;
 mod spiral_matrix;
 mod maximum_subarray;
+mod jump_game;
 mod merge_intervals;
 mod unique_paths;
 mod climbing_stairs;
