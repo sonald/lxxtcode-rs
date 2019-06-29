@@ -41,3 +41,4 @@ mod spiral_matrix;
 mod maximum_subarray;
 mod merge_intervals;
 mod unique_paths;
+mod climbing_stairs;
