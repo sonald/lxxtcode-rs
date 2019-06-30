@@ -44,3 +44,6 @@ mod merge_intervals;
 mod unique_paths;
 mod climbing_stairs;
 mod set_matrix_zeroes;
+mod sort_colors;
+mod subsets;
+mod subsets2;
