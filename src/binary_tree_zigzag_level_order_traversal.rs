@@ -2,10 +2,8 @@ use super::utils::*;
 use std::cell::RefCell;
 use std::rc::Rc;
 
-#[allow(dead_code)]
 pub struct Solution;
 
-#[allow(dead_code)]
 impl Solution {
     pub fn zigzag_level_order(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<Vec<i32>> {
         Solution::sol2(root)
@@ -137,7 +135,6 @@ mod tests {
             assert_eq!(Solution::zigzag_level_order(Some(Rc::new(RefCell::new(root)))), res);
         }
     }
-
 }
 
 

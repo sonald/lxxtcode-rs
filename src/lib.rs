@@ -51,3 +51,5 @@ mod word_search;
 mod decode_ways;
 mod sort_colors;
 mod sqrtx;
+mod binary_tree_inorder_traveral;
+mod validate_binary_search_tree;
