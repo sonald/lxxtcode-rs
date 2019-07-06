@@ -57,3 +57,4 @@ mod symmetric_tree;
 mod binary_tree_level_order_traversal;
 mod max_depth_of_binary_tree;
 mod convert_sorted_array_to_binary_search_tree;
+mod construct_binary_tree_from_preorder_and_inorder_traversal;
