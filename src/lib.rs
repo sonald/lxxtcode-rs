@@ -61,3 +61,4 @@ mod construct_binary_tree_from_preorder_and_inorder_traversal;
 mod pascals_triangle;
 mod best_time_to_buy_and_sell_stock;
 mod best_time_to_buy_and_sell_stock2;
+mod valid_palindrome;
