@@ -5,7 +5,7 @@ impl Solution {
         Self::by_backtrack(nums)
     }
 
-    fn by_backtrack(mut nums: Vec<i32>) -> Vec<Vec<i32>> {
+    fn by_backtrack(nums: Vec<i32>) -> Vec<Vec<i32>> {
         use std::collections::HashMap;
         let mut h = HashMap::new();
         let mut res = vec![];

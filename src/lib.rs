@@ -62,3 +62,6 @@ mod pascals_triangle;
 mod best_time_to_buy_and_sell_stock;
 mod best_time_to_buy_and_sell_stock2;
 mod valid_palindrome;
+mod surrounded_regions;
+mod palindrome_partition;
+mod gas_station;

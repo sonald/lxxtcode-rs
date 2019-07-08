@@ -5,7 +5,7 @@ pub struct Solution;
 
 #[allow(dead_code)]
 impl Solution {
-    pub fn remove_nth_from_end(mut head: Option<Box<ListNode>>, mut n: i32) -> Option<Box<ListNode>> {
+    pub fn remove_nth_from_end(head: Option<Box<ListNode>>, n: i32) -> Option<Box<ListNode>> {
         let mut k = n;
         let mut dummy = Some(Box::new(ListNode::new(0)));
         dummy.as_mut().unwrap().next = head;
@@ -30,7 +30,7 @@ impl Solution {
             k -= 1;
         }
         
-        let mut next = slow.as_mut().unwrap().next.as_mut().unwrap().next.take();
+        let next = slow.as_mut().unwrap().next.as_mut().unwrap().next.take();
         slow.as_mut().unwrap().next = next;
 
         dummy.unwrap().next

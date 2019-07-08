@@ -5,7 +5,7 @@ impl Solution {
         Self::by_recurse(nums)
     }
 
-    pub fn by_recurse(mut nums: Vec<i32>) -> Vec<Vec<i32>> {
+    pub fn by_recurse(nums: Vec<i32>) -> Vec<Vec<i32>> {
         use std::collections::HashSet;
 
         let mut res = vec![];
