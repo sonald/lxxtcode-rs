@@ -42,8 +42,6 @@ impl Solution {
     }
 
     fn by_iter(nums: &Vec<i32>, mut l: i32, mut r: i32, target: i32) -> i32 {
-        use std::cmp::Ordering::*;
-
         while l <= r {
             let m = l + (r - l) / 2;
             if nums[m as usize] == target {

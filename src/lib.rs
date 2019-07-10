@@ -65,3 +65,5 @@ mod valid_palindrome;
 mod surrounded_regions;
 mod palindrome_partition;
 mod gas_station;
+mod word_break;
+mod evaluate_reverse_polish_notation;

@@ -75,7 +75,7 @@ mod tests {
     #[test]
     fn partition_test() {
         method_test(Solution::by_backtrack);
-        //method_test(Solution::by_dp);
+        method_test(Solution::by_dp);
     }
 
     fn method_test(f: impl Fn(String) -> Vec<Vec<String>>) {
