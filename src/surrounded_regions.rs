@@ -3,28 +3,6 @@ pub struct Solution;
 impl Solution {
     pub fn solve(board: &mut Vec<Vec<char>>) {
         Self::from_border(board)
-        //Self::flood_fill(board)
-    }
-
-    pub fn flood_fill(board: &mut Vec<Vec<char>>) {
-        fn fill(b: &mut Vec<Vec<char>>, i: usize, j: usize) {
-
-        }
-
-        if board.len() == 0 || board[0].len() == 0 {
-            return;
-        }
-
-        let nr = board.len();
-        let nc = board[0].len();
-
-        for r in 1..nr {
-            for c in 1..nc {
-                if board[r][c] == 'O' {
-                    fill(board, r, c)
-                }
-            }
-        }
     }
 
     // two passes
@@ -38,19 +16,19 @@ impl Solution {
 
             b[i][j] = 'Y';
 
-            if i > 0 && b[i-1][j] == 'O' {
+            if i > 0 {
                 mark_border(b, i-1, j);
             }
 
-            if j < b[0].len()-1 && b[i][j+1] == 'O' {
+            if j < b[0].len()-1 {
                 mark_border(b, i, j+1);
             }
 
-            if i < b.len()-1 && b[i+1][j] == 'O' {
+            if i < b.len()-1 {
                 mark_border(b, i+1, j);
             }
 
-            if j > 0 && b[i][j-1] == 'O' {
+            if j > 0 {
                 mark_border(b, i, j-1);
             }
         }
