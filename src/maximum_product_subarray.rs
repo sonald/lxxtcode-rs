@@ -5,6 +5,21 @@ impl Solution {
         Self::by_bruteforce(nums)
     }
 
+    fn by_iterative2(nums: Vec<i32>) -> i32 {
+        let mut ret = nums[0];
+        let mut cur_min = ret;
+        let mut cur_max = ret;
+        for i in 1..nums.len() {
+            let x = nums[i];
+            let (v1, v2) = (x * cur_max, x * cur_min);
+            cur_max = x.max(v1).max(v2);
+            cur_min = x.min(v1).min(v2);
+            ret = ret.max(cur_max);
+        }
+
+        ret
+    }
+
     fn by_iterative(nums: Vec<i32>) -> i32 {
         let mut max = i32::min_value();
         let mut cur = 1;
@@ -41,6 +56,9 @@ mod tests {
     use test::Bencher;
 
     fn method_test(f: impl Fn(Vec<i32>) -> i32) {
+        let v = vec![2, -1, 4, -3, -4];
+        assert_eq!(f(v), 48);
+
         let v = vec![2, 3, -2, 4];
         assert_eq!(f(v), 6);
 
@@ -85,6 +103,7 @@ mod tests {
     fn product_test() {
         method_test(Solution::by_bruteforce);
         method_test(Solution::by_iterative);
+        method_test(Solution::by_iterative2);
     }
 
     #[bench]
