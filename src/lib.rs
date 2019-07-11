@@ -67,3 +67,4 @@ mod palindrome_partition;
 mod gas_station;
 mod word_break;
 mod evaluate_reverse_polish_notation;
+mod maximum_product_subarray;

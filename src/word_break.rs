@@ -38,18 +38,18 @@ mod tests {
     fn method_test(f: impl Fn(String, Vec<String>) -> bool) {
         {
             let s = "leetcode".to_string();
-            let wordDict = vec!["leet".to_string(), "code".to_string()];
-            assert_eq!(f(s, wordDict), true);
+            let word_dict = vec!["leet".to_string(), "code".to_string()];
+            assert_eq!(f(s, word_dict), true);
         }
         {
             let s = "applepenapple".to_string();
-            let wordDict = vec!["apple".to_string(), "pen".to_string()];
-            assert_eq!(f(s, wordDict), true);
+            let word_dict = vec!["apple".to_string(), "pen".to_string()];
+            assert_eq!(f(s, word_dict), true);
         }
         {
             let s = "appleponapple".to_string();
-            let wordDict = vec!["apple".to_string(), "pen".to_string()];
-            assert_eq!(f(s, wordDict), false);
+            let word_dict = vec!["apple".to_string(), "pen".to_string()];
+            assert_eq!(f(s, word_dict), false);
         }
     }
 }
