@@ -69,3 +69,5 @@ mod word_break;
 mod evaluate_reverse_polish_notation;
 mod maximum_product_subarray;
 mod min_stack;
+mod find_peak_element;
+mod fraction_to_recurring_decimals;
