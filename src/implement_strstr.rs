@@ -1,8 +1,9 @@
 pub struct Solution;
 
 impl Solution {
+    //TODO: KMP, BM
     pub fn str_str(haystack: String, needle: String) -> i32 {
-        0
+        Self::naive(haystack, needle)
     }
 
     pub fn naive(haystack: String, needle: String) -> i32 {

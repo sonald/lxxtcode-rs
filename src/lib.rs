@@ -71,3 +71,6 @@ mod maximum_product_subarray;
 mod min_stack;
 mod find_peak_element;
 mod fraction_to_recurring_decimals;
+mod majority_elements;
+mod excel_sheet_column_number;
+mod factorial_trailing_zeroes;
