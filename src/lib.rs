@@ -74,3 +74,5 @@ mod fraction_to_recurring_decimals;
 mod majority_elements;
 mod excel_sheet_column_number;
 mod factorial_trailing_zeroes;
+mod largest_numbers;
+mod rotate_array;
