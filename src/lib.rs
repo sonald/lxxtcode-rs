@@ -76,3 +76,6 @@ mod excel_sheet_column_number;
 mod factorial_trailing_zeroes;
 mod largest_numbers;
 mod rotate_array;
+mod house_robber;
+mod numbers_of_islands;
+mod happy_numbers;
