@@ -79,3 +79,5 @@ mod rotate_array;
 mod house_robber;
 mod numbers_of_islands;
 mod happy_numbers;
+mod count_primes;
+mod reverse_linked_list;
