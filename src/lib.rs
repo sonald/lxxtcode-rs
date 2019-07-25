@@ -81,3 +81,4 @@ mod numbers_of_islands;
 mod happy_numbers;
 mod count_primes;
 mod reverse_linked_list;
+mod course_schedule;
