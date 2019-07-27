@@ -82,3 +82,4 @@ mod happy_numbers;
 mod count_primes;
 mod reverse_linked_list;
 mod course_schedule;
+mod implement_trie;
